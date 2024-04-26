@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+       Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  
+    <property>
+    	<name>dfs.replication</name>
+        <value>3</value>
+    </property>
+
+    <property>
+      <name>dfs.namenode.name.dir</name>
+      <value>file:/data/hadoop/hdfs/name</value>
+    </property>
+
+    <property>
+      <name>dfs.datanode.data.dir</name>
+      <value>file:/data/hadoop/hdfs/data</value>
+    </property>
+
+    <property>
+	<name>dfs.ha.automatic-failover.enabled</name>
+	<value>true</value>
+    </property>
+
+    <property>
+	<name>dfs.nameservices</name>
+        <value>ns1</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.namenodes.ns1</name>
+        <value>nn1,nn2</value>
+    </property>
+
+
+    <property>
+        <name>dfs.namenode.rpc-address.ns1.nn1</name>
+        <value>172.16.104.67:9000</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.rpc-address.ns1.nn2</name>
+        <value>172.16.104.69:9000</value>
+    </property>
+
+
+
+    <property>
+        <name>dfs.namenode.http-address.ns1.nn1</name>
+        <value>172.16.104.67:60070</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.http-address.ns1.nn2</name>
+        <value>172.16.104.69:60070</value>
+    </property>
+
+
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://172.16.104.67:8485;172.16.104.69:8485/namenode-ha-data</value>
+    </property>
+
+
+    <property>
+        <name>dfs.client.failover.proxy.provider.ns1</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+        <description>指定客户端用于HA切换的代理类，不同的NS可以用不同的代理类
+            以上示例为Hadoop 2.0自带的缺省代理类</description>
+    </property>
+
+    <property>
+    	<name>dfs.journalnode.rpc-address</name>
+    	<value>0.0.0.0:8485</value>
+    </property>
+
+    <property>
+    	<name>dfs.journalnode.http-address</name>
+    	<value>0.0.0.0:18480</value>
+    </property>
+
+    <property>
+    	<name>dfs.datanode.http.address</name>
+    	<value>0.0.0.0:60075</value>
+    </property>
+
+    <property>
+    	<name>dfs.journalnode.edits.dir</name>
+    	<value>/data/hadoop/hdfs/journal</value>
+    </property>
+
+    <property>
+        <name>dfs.safemode.threshold.pct</name>
+        <value>0.5</value>
+    </property>
+
+    <property>
+        <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+        <value>false</value>
+    </property>
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>64</value>
+    </property>
+    <property>
+        <name>ipc.server.read.threadpool.size</name>
+        <value>1</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.failed.volumes.tolerated</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>dfs.datanode.du.reserved</name>
+        <value>20971520</value>
+    </property>
+    <property>
+        <name>dfs.datanode.address</name>
+        <value>0.0.0.0:50010</value>
+    </property>
+    <property>
+        <name>dfs.datanode.ipc.address</name>
+        <value>0.0.0.0:50020</value>
+    </property>
+    <property>
+        <name>dfs.namenode.name.dir.restore</name>
+        <value>FALSE</value>
+    </property>
+    <property>
+        <name>dfs.namenode.edits.journal-plugin.qjournal</name>
+        <value>org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager</value>
+    </property>
+    <property>
+        <name>dfs.permissions.enabled</name>
+        <value>TRUE</value>
+    </property>
+    <property>
+        <name>dfs.permissions.superusergroup</name>
+        <value>supergroup</value>
+    </property>
+    <property>
+        <name>dfs.replication.max</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>dfs.namenode.replication.min</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.blocksize</name>
+        <value>134217728</value>
+    </property>
+    <property>
+        <name>dfs.client.block.write.retries</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>dfs.client.block.write.replace-datanode-on-failure.enable</name>
+        <value>TRUE</value>
+    </property>
+    <property>
+        <name>dfs.client.block.write.replace-datanode-on-failure.policy</name>
+        <value>DEFAULT</value>
+    </property>
+    <property>
+        <name>dfs.heartbeat.interval</name>
+        <value>3</value>
+    </property>
+    <property>
+        <name>dfs.namenode.safemode.threshold-pct</name>
+        <value>0.999f</value>
+    </property>
+    <property>
+        <name>dfs.namenode.safemode.extension</name>
+        <value>30000</value>
+    </property>
+    <property>
+        <name>dfs.datanode.balance.bandwidthPerSec</name>
+        <value>1048576</value>
+    </property>
+    <property>
+        <name>dfs.hosts</name>
+        <value>null</value>
+    </property>
+    <property>
+        <name>dfs.hosts.exclude</name>
+        <value>null</value>
+    </property>
+    <property>
+        <name>dfs.stream-buffer-size</name>
+        <value>4096</value>
+    </property>
+    <property>
+        <name>dfs.namenode.num.extra.edits.retained</name>
+        <value>1000000</value>
+    </property>
+    <property>
+        <name>dfs.datanode.handler.count</name>
+        <value>10</value>
+    </property>
+    <property>
+        <name>dfs.namenode.support.allow.format</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.client.failover.max.attempts</name>
+        <value>15</value>
+    </property>
+    <property>
+        <name>dfs.client.failover.connection.retries</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>dfs.client.failover.connection.retries.on.timeouts</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>dfs.namenode.avoid.write.stale.datanode</name>
+        <value>FALSE</value>
+    </property>
+    <property>
+        <name>dfs.namenode.write.stale.datanode.ratio</name>
+        <value>0.5f</value>
+    </property>
+    <property>
+        <name>dfs.https.enable</name>
+        <value>FALSE</value>
+    </property>
+    <property>
+        <name>dfs.datanode.dns.interface</name>
+        <value>default</value>
+    </property>
+    <property>
+        <name>dfs.datanode.dns.nameserver</name>
+        <value>default</value>
+    </property>
+    <property>
+        <name>dfs.default.chunk.view.size</name>
+        <value>32768</value>
+    </property>
+    <property>
+        <name>dfs.namenode.fs-limits.max-component-length</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>dfs.namenode.fs-limits.max-directory-items</name>
+        <value>1048576</value>
+    </property>
+    <property>
+        <name>dfs.namenode.fs-limits.min-block-size</name>
+        <value>1048576</value>
+    </property>
+    <property>
+        <name>dfs.namenode.fs-limits.max-blocks-per-file</name>
+        <value>1048576</value>
+    </property>
+    <property>
+        <name>dfs.blockreport.intervalMsec</name>
+        <value>21600000</value>
+    </property>
+    <property>
+        <name>dfs.datanode.directoryscan.interval</name>
+        <value>21600</value>
+    </property>
+    <property>
+        <name>dfs.blockreport.initialDelay</name>
+        <value>0</value>
+    </property>
+    <property>
+        <name>dfs.datanode.directoryscan.threads</name>
+        <value>1</value>
+    </property>
+    <property>
+        <name>dfs.bytes-per-checksum</name>
+        <value>512</value>
+    </property>
+    <property>
+        <name>dfs.client-write-packet-size</name>
+        <value>65536</value>
+    </property>
+    <property>
+        <name>dfs.image.compress</name>
+        <value>FALSE</value>
+    </property>
+    <property>
+        <name>dfs.image.compression.codec</name>
+        <value>org.apache.hadoop.io.compress.DefaultCodec</value>
+    </property>
+    <property>
+        <name>dfs.datanode.max.transfer.threads</name>
+        <value>4096</value>
+    </property>
+    <property>
+        <name>dfs.namenode.avoid.read.stale.datanode</name>
+        <value>FALSE</value>
+    </property>
+    <property>
+        <name>dfs.namenode.stale.datanode.interval</name>
+        <value>60000</value>
+    </property>
+    <property>
+        <name>dfs.webhdfs.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>dfs.client.file-block-storage-locations.num-threads</name>
+        <value>10</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.fsdataset.volume.choosing.policy</name>
+        <value>org.apache.hadoop.hdfs.server.datanode.fsdataset.AvailableSpaceVolumeChoosingPolicy</value>
+    </property>
+
+    <property>
+        <name>dfs.blockreport.split.threshold</name>
+        <value>500000</value>
+        <description>If the number of blocks on the DataNode is below this
+            threshold then it will send block reports for all Storage Directories
+            in a single message.
+
+            If the number of blocks exceeds this threshold then the DataNode will
+            send block reports for each Storage Directory in separate messages.
+
+            Set to zero to always split.
+        </description>
+    </property>
+
+     
+</configuration>
+
